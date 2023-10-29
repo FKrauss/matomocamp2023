@@ -1,0 +1,19 @@
+    <script> 
+    var trackingDetails = {};
+    trackingDetails.subscriptions = [];
+    trackingDetails.identified = false;
+    {{#if @member}}
+    {{#foreach @member.subscriptions}}
+
+      var subscription = {};
+      subscription.name = "{{customer.name}}";
+      subscription.plan = "{{plan.nickname}}";
+      subscription.status = "{{status}}";
+
+      trackingDetails.subscriptions.push(subscription);
+    {{/foreach}}
+    trackingDetails.memberUuid = '{{@member.uuid}}';
+    trackingDetails.memberEmail = '{{@member.email}}';
+    trackingDetails.identified = true;
+    {{/if}}
+    </script>
